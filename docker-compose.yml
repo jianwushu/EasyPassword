@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:14-alpine
+    container_name: easypassword-postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: easypassword
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+  backend:
+    build:
+      context: ./password-manager-backend
+      dockerfile: Dockerfile
+    container_name: easypassword-backend
+    ports:
+      - "8080:8080"
+    environment:
+      - DB_SOURCE=postgresql://postgres:postgres@postgres:5432/easypassword?sslmode=disable
+      - JWT_SECRET_KEY=your-super-secret-key-change-me # Change this in production
+    depends_on:
+      - postgres
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./password-manager-frontend
+      dockerfile: Dockerfile
+    container_name: easypassword-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+volumes:
+  postgres_data:

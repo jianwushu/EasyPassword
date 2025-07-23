@@ -1,0 +1,57 @@
+:root {
+  --primary-color: #4A90E2;
+  --primary-color-dark: #357ABD;
+}
+
+/* Light Theme */
+html[data-theme='light'] {
+  --bg-color: #f7f9fc;
+  --header-bg-color: #ffffff;
+  --card-bg-color: #ffffff;
+  --text-color-primary: #333333;
+  --text-color-secondary: #757575;
+  --border-color: #e0e0e0;
+  --input-bg-color: #f0f2f5;
+  --button-hover-bg: #f0f0f0;
+}
+
+/* Dark Theme */
+html[data-theme='dark'] {
+  --bg-color: #1a1a1a;
+  --header-bg-color: #242424;
+  --card-bg-color: #2c2c2c;
+  --text-color-primary: #e0e0e0;
+  --text-color-secondary: #a0a0a0;
+  --border-color: #424242;
+  --input-bg-color: #3a3a3a;
+  --button-hover-bg: #424242;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  background-color: var(--bg-color);
+  color: var(--text-color-primary);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+#app {
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+/* Reset some default styles */
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}

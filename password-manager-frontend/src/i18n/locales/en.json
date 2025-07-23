@@ -1,0 +1,132 @@
+{
+  "app": {
+    "title": "EasyPassword"
+  },
+  "dashboard": {
+    "title": "Vault",
+    "search_placeholder": "Search in vault...",
+    "total_items": "{count} item | {count} items",
+    "redecrypt_tooltip": "Re-decrypt vault",
+    "toggle_theme_tooltip": "Toggle theme",
+    "toggle_language_tooltip": "Switch Language",
+    "logout_tooltip": "Logout",
+    "add_new_item_button": "Add New Item",
+    "decrypt_prompt": {
+      "placeholder": "Enter your master password to decrypt",
+      "button": "Decrypt Vault"
+    },
+    "empty_state": {
+      "title": "Your Vault is Empty",
+      "subtitle": "Get started by adding your first password.",
+      "no_search_results": "No results found for \"{query}\"",
+      "add_first_item_button": "Add First Item"
+    },
+    "create_modal": {
+      "title": "Create New Vault Item",
+      "master_password_placeholder": "Enter your master password to encrypt",
+      "create_button": "Create Item"
+    },
+    "edit_modal": {
+      "title": "Edit Vault Item",
+      "master_password_placeholder": "Enter master password to save changes",
+      "save_button": "Save Changes"
+    },
+    "form": {
+      "name_label": "Name",
+      "name_placeholder": "e.g., Google Account",
+      "website_label": "Website",
+      "website_placeholder": "e.g., https://google.com",
+      "login_label": "Login/Username",
+      "login_placeholder": "",
+      "password_label": "Password",
+      "password_placeholder": "Enter a strong password",
+      "category_label": "Category",
+      "category_placeholder": "e.g., Social Media",
+      "master_password_label": "Master Password"
+    },
+    "messages": {
+      "copy_success": "{type} copied to clipboard!",
+      "copy_error": "Failed to copy {type}.",
+      "master_password_required_creation": "Master password is required to create an item.",
+      "item_created_success": "Item created successfully!",
+      "item_created_fail": "Failed to create item.",
+      "vault_fetch_fail": "Failed to fetch vault.",
+      "master_password_required_decryption": "Master password is required to decrypt the vault.",
+      "vault_decrypted_success": "Vault decrypted successfully!",
+      "vault_decrypted_fail": "Failed to decrypt vault. Check your password.",
+      "master_password_required_update": "Master password is required to update the item.",
+      "item_updated_success": "Item updated successfully!",
+      "item_updated_fail": "Failed to update item.",
+      "item_deleted_success": "Item deleted successfully.",
+      "item_deleted_fail": "Failed to delete item.",
+      "vault_locked_success": "Vault locked successfully.",
+      "clipboard_cleared": "Clipboard has been cleared for security."
+    },
+    "delete_dialog": {
+      "title": "Delete Item",
+      "content": "Are you sure you want to delete this item? This action cannot be undone.",
+      "confirm_button": "Delete"
+    },
+    "relock_dialog": {
+      "title": "Lock Vault",
+      "content": "Are you sure you want to lock the vault? You will need to re-enter your master password to view items.",
+      "confirm_button": "Lock"
+    }
+  },
+  "password_generator": {
+    "title": "Password Generator",
+    "card_title": "Generate a Secure Password",
+    "length": "Length",
+    "include_uppercase": "Include Uppercase",
+    "include_numbers": "Include Numbers (e.g., 123)",
+    "include_symbols": "Include Symbols (e.g., #$%)",
+    "generate": "Generate",
+    "use_password": "Use Password",
+    "generated_password": "Generated Password"
+  },
+  "password_item_card": {
+    "username": "Username",
+    "password": "Password",
+    "copy_username_aria": "Copy username",
+    "copy_password_aria": "Copy password",
+    "show_password_aria": "Show password",
+    "hide_password_aria": "Hide password",
+    "more_actions_aria": "More actions",
+    "edit": "Edit",
+    "delete": "Delete",
+    "copied_username_message": "Username",
+    "copied_password_message": "Password",
+    "created_at": "Created",
+    "updated_at": "Updated"
+  },
+  "login_view": {
+    "title": "Login to Your Account",
+    "username_label": "Username",
+    "username_placeholder": "Enter your username",
+    "password_label": "Master Password",
+    "password_placeholder": "Enter your master password",
+    "login_button": "Login",
+    "no_account": "Don't have an account?",
+    "register_now": "Register now",
+    "login_failed": "Login failed, please check your username and password."
+  },
+  "register_view": {
+    "title": "Create Your Account",
+    "username_label": "Username",
+    "username_placeholder": "Enter your username",
+    "password_label": "Master Password",
+    "password_placeholder": "Set a strong master password",
+    "register_button": "Register",
+    "has_account": "Already have an account?",
+    "login_now": "Login now",
+    "validation_username_required": "Please enter a username",
+    "validation_password_required": "Please enter a master password",
+    "validation_password_min_length": "Master password cannot be less than 8 characters",
+    "registration_success": "Registration successful! You can now log in.",
+    "registration_failed": "Registration failed, please try again later.",
+    "check_input": "Please check your input"
+  },
+  "common": {
+    "cancel": "Cancel"
+  }
+}
