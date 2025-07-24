@@ -29,12 +29,15 @@ html[data-theme='dark'] {
 
 body {
   margin: 0;
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: "PingFang SC", "Microsoft YaHei UI", "Helvetica Neue", "Hiragino Sans GB", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "wenquanyi micro hei", "sans-serif";
   line-height: 1.5;
   font-weight: 400;
   background-color: var(--bg-color);
   color: var(--text-color-primary);
   transition: background-color 0.3s, color 0.3s;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 #app {

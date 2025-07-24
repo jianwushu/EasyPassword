@@ -1,0 +1,29 @@
+# General
+.DS_Store
+*.log
+*.sw?
+
+# Go backend
+/password-manager-backend/easypassword
+/password-manager-backend/easypassword.exe
+*.db
+
+# Node.js frontend
+/password-manager-frontend/node_modules
+/password-manager-frontend/dist
+/password-manager-frontend/dist-ssr
+/password-manager-frontend/*.local
+/password-manager-frontend/npm-debug.log*
+/password-manager-frontend/yarn-debug.log*
+/password-manager-frontend/yarn-error.log*
+/password-manager-frontend/pnpm-debug.log*
+/password-manager-frontend/lerna-debug.log*
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln

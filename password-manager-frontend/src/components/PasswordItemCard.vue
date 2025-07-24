@@ -135,7 +135,7 @@ const togglePasswordVisibility = () => {
 const copy = (type: 'login' | 'password') => {
   if (copiedState.value) return; // 防止多次点击
 
-  const textToCopy = type === 'login' ? props.item.website : props.item.password;
+  const textToCopy = type === 'login' ? props.item.account : props.item.password;
   if (textToCopy) {
     emit('copy', {
       text: textToCopy,
