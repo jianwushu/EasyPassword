@@ -40,7 +40,6 @@ import {
   useMessage,
   type FormInst,
   type FormRules,
-  type FormItemRule,
 } from 'naive-ui';
 import { useAuthStore } from '../store/auth';
 import { useRouter } from 'vue-router';
