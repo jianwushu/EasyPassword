@@ -32,6 +32,8 @@ func InitBoltDB(path string) (*bbolt.DB, error) {
 			[]byte("users"),
 			[]byte("vaults"),
 			[]byte("usernames"),
+			[]byte("emails"),
+			[]byte("verification_codes"),
 		}
 		for _, bucket := range buckets {
 			_, err := tx.CreateBucketIfNotExists(bucket)

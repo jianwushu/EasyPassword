@@ -1,7 +1,9 @@
 export interface UserCredentials {
   username: string;
+  email?: string;
   master_key_hash: string;
   master_salt?: string;
+  code?: string;
 }
 
 export interface VaultItem {

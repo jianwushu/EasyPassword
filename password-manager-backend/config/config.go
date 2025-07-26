@@ -13,6 +13,11 @@ type Config struct {
 	JWTExpiration  time.Duration
 	DBType         string
 	DBPath         string
+	SMTPHost       string
+	SMTPPort       int
+	SMTPUser       string
+	SMTPPassword   string
+	SMTPFrom       string
 }
 
 // Load 从环境变量加载配置。
@@ -44,11 +49,42 @@ func Load() *Config {
 		dbPath = "easypassword.db" // boltdb 的默认路径
 	}
 
+	smtpHost := os.Getenv("SMTP_HOST")
+	if smtpHost == "" {
+		smtpHost = "localhost" // dev default
+	}
+
+	smtpPortStr := os.Getenv("SMTP_PORT")
+	smtpPort, err := strconv.Atoi(smtpPortStr)
+	if err != nil || smtpPort <= 0 {
+		smtpPort = 1025 // dev default (e.g., MailHog)
+	}
+
+	smtpUser := os.Getenv("SMTP_USER")
+	if smtpUser == "" {
+		smtpUser = "" // dev default
+	}
+
+	smtpPassword := os.Getenv("SMTP_PASSWORD")
+	if smtpPassword == "" {
+		smtpPassword = "" // dev default
+	}
+
+	smtpFrom := os.Getenv("SMTP_FROM")
+	if smtpFrom == "" {
+		smtpFrom = "no-reply@easypassword.com" // dev default
+	}
+
 	return &Config{
 		DatabaseURL:    dbURL,
 		JWTSecret:      jwtSecret,
 		JWTExpiration:  time.Hour * time.Duration(jwtExpHours),
 		DBType:         dbType,
 		DBPath:         dbPath,
+		SMTPHost:       smtpHost,
+		SMTPPort:       smtpPort,
+		SMTPUser:       smtpUser,
+		SMTPPassword:   smtpPassword,
+		SMTPFrom:       smtpFrom,
 	}
 }

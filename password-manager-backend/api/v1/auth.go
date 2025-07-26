@@ -25,13 +25,16 @@ func (h *AuthHandler) RegisterRoutes(router *gin.Engine) {
 		v1.POST("/register", h.register)
 		v1.POST("/login", h.login)
 		v1.GET("/salt/:username", h.getSalt)
+		v1.POST("/send-verification-code", h.sendVerificationCode)
 	}
 }
 
 type registerRequest struct {
 	Username      string `json:"username" binding:"required,min=1"`
+	Email         string `json:"email" binding:"required,email"`
 	MasterKeyHash string `json:"master_key_hash" binding:"required"`
 	MasterSalt    string `json:"master_salt" binding:"required"`
+	Code          string `json:"code" binding:"required,len=6"`
 }
 
 type loginRequest struct {
@@ -44,6 +47,10 @@ type loginResponse struct {
 	MasterSalt string `json:"master_salt"`
 }
 
+type sendVerificationCodeRequest struct {
+	Email string `json:"email" binding:"required,email"`
+}
+
 func (h *AuthHandler) register(c *gin.Context) {
 	var req registerRequest
 	if err := c.ShouldBindJSON(&req); err != nil {
@@ -51,7 +58,7 @@ func (h *AuthHandler) register(c *gin.Context) {
 		return
 	}
 
-	user, err := h.authService.Register(c.Request.Context(), req.Username, req.MasterKeyHash, req.MasterSalt)
+	user, err := h.authService.Register(c.Request.Context(), req.Username, req.Email, req.MasterKeyHash, req.MasterSalt, req.Code)
 	if err != nil {
 		handleError(c, err)
 		return
@@ -90,4 +97,20 @@ func (h *AuthHandler) getSalt(c *gin.Context) {
 		return
 	}
 	c.JSON(http.StatusOK, gin.H{"master_salt": masterSalt})
+}
+
+func (h *AuthHandler) sendVerificationCode(c *gin.Context) {
+	var req sendVerificationCodeRequest
+	if err := c.ShouldBindJSON(&req); err != nil {
+		handleError(c, apierror.ErrInvalidRequest)
+		return
+	}
+
+	err := h.authService.SendVerificationCode(c.Request.Context(), req.Email)
+	if err != nil {
+		handleError(c, err)
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{"message": "Verification code sent successfully"})
 }

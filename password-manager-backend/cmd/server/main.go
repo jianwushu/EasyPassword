@@ -5,6 +5,7 @@ import (
 	"easy-password-backend/config"
 	"easy-password-backend/internal/auth"
 	"easy-password-backend/internal/core"
+	"easy-password-backend/internal/email"
 	"easy-password-backend/internal/repository"
 	"easy-password-backend/internal/service"
 	"fmt"
@@ -32,7 +33,7 @@ func main() {
 			log.Fatalf("could not connect to postgres: %v", err)
 		}
 		// 自动迁移模式
-		err = gormDB.AutoMigrate(&core.User{}, &core.VaultItem{})
+		err = gormDB.AutoMigrate(&core.User{}, &core.VaultItem{}, &core.VerificationCode{})
 		if err != nil {
 			log.Fatalf("Failed to migrate database: %v", err)
 		}
@@ -55,7 +56,8 @@ func main() {
 	}
 
 	// 初始化服务
-	authService := auth.NewAuthService(storage.User(), cfg)
+	emailService := email.NewSMTPEmailService(cfg.SMTPHost, cfg.SMTPPort, cfg.SMTPUser, cfg.SMTPPassword, cfg.SMTPFrom)
+	authService := auth.NewAuthService(storage.User(), storage.VerificationCode(), emailService, cfg)
 	log.Println("AuthService initialized.")
 	vaultService := service.NewVaultService(storage.Vault())
 	log.Println("VaultService initialized.")

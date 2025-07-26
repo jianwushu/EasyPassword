@@ -1,7 +1,6 @@
 import { defineStore } from 'pinia';
 import * as api from '../api/auth';
-import { deriveKey } from '../crypto/vault';
-import * as CryptoJS from 'crypto-js';
+import { deriveKey, generateSalt, hashKey } from '../crypto/vault';
 
 export const useAuthStore = defineStore('auth', {
   state: () => ({
@@ -11,16 +10,21 @@ export const useAuthStore = defineStore('auth', {
     isAuthenticated: false,
   }),
   actions: {
-    async register(username: string, masterPassword: string): Promise<void> {
-      const salt = CryptoJS.lib.WordArray.random(16).toString(CryptoJS.enc.Hex);
+    async register(username: string, email: string, masterPassword: string, code: string): Promise<void> {
+      const salt = generateSalt();
       const masterKey = await deriveKey(masterPassword, salt);
-      const masterKeyHash = CryptoJS.SHA256(masterKey.toString()).toString(CryptoJS.enc.Hex);
+      const masterKeyHash = await hashKey(masterKey);
 
       await api.register({
         username,
+        email,
         master_key_hash: masterKeyHash,
         master_salt: salt,
+        code,
       });
+    },
+    async sendVerificationCode(email: string): Promise<void> {
+      await api.sendVerificationCode({ email });
     },
     async login(username: string, masterPassword: string): Promise<void> {
       // 步骤 1：从服务器获取盐。
@@ -29,7 +33,7 @@ export const useAuthStore = defineStore('auth', {
 
       // 步骤 2：派生主密钥并进行哈希。
       const masterKey = await deriveKey(masterPassword, salt);
-      const masterKeyHash = CryptoJS.SHA256(masterKey.toString()).toString(CryptoJS.enc.Hex);
+      const masterKeyHash = await hashKey(masterKey);
 
       // 步骤 3：使用用户名和主密钥哈希调用登录 API。
       const loginResponse = await api.login({

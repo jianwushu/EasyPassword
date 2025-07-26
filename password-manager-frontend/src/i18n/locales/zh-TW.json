@@ -1,0 +1,144 @@
+{
+  "app": {
+    "title": "EasyPassword"
+  },
+  "dashboard": {
+    "title": "密碼庫",
+    "search_placeholder": "在密碼庫中搜尋...",
+    "total_items": "{count} 個項目",
+    "redecrypt_tooltip": "重新解密",
+    "toggle_theme_tooltip": "切換主題",
+    "toggle_language_tooltip": "切換語言",
+    "logout_tooltip": "登出",
+    "add_new_item_button": "新增項目",
+    "decrypt_prompt": {
+      "placeholder": "輸入您的主密碼以解密",
+      "button": "解密密碼庫"
+    },
+    "empty_state": {
+      "title": "您的密碼庫是空的",
+      "subtitle": "從新增您的第一個密碼開始。",
+      "no_search_results": "找不到與「{query}」相關的結果",
+      "add_first_item_button": "新增第一個項目"
+    },
+    "create_modal": {
+      "title": "建立新的密碼庫項目",
+      "master_password_placeholder": "輸入您的主密碼以加密",
+      "create_button": "建立項目"
+    },
+    "edit_modal": {
+      "title": "編輯密碼庫項目",
+      "master_password_placeholder": "輸入主密碼以儲存變更",
+      "save_button": "儲存變更"
+    },
+    "form": {
+      "name_label": "名稱",
+      "name_placeholder": "例如, Google 帳戶",
+      "website_label": "網站",
+      "website_placeholder": "例如, https://google.com",
+      "login_label": "登入名/使用者名稱",
+      "login_placeholder": "",
+      "password_label": "密碼",
+      "password_placeholder": "輸入一個強密碼",
+      "category_label": "類別",
+      "category_placeholder": "例如, 社群媒體",
+      "master_password_label": "主密碼"
+    },
+    "messages": {
+      "copy_success": "{type} 已複製到剪貼簿！",
+      "copy_error": "複製 {type} 失敗。",
+      "master_password_required_creation": "建立項目需要主密碼。",
+      "item_created_success": "項目建立成功！",
+      "item_created_fail": "建立項目失敗。",
+      "vault_fetch_fail": "取得密碼庫失敗。",
+      "master_password_required_decryption": "解密密碼庫需要主密碼。",
+      "vault_decrypted_success": "密碼庫解密成功！",
+      "vault_decrypted_fail": "密碼庫解密失敗。請檢查您的密碼。",
+      "master_password_required_update": "更新項目需要主密碼。",
+      "item_updated_success": "項目更新成功！",
+      "item_updated_fail": "更新項目失敗。",
+      "item_deleted_success": "項目刪除成功。",
+      "item_deleted_fail": "刪除項目失敗。",
+      "vault_locked_success": "密碼庫已成功鎖定。",
+      "clipboard_cleared": "為了安全，剪貼簿已被清除。"
+    },
+    "delete_dialog": {
+      "title": "刪除項目",
+      "content": "您確定要刪除此項目嗎？此操作無法復原。",
+      "confirm_button": "刪除"
+    },
+    "relock_dialog": {
+      "title": "鎖定密碼庫",
+      "content": "您確定要鎖定密碼庫嗎？您需要重新輸入主密碼才能檢視項目。",
+      "confirm_button": "鎖定"
+    }
+  },
+  "password_generator": {
+    "title": "密碼產生器",
+    "card_title": "產生安全密碼",
+    "length": "長度",
+    "include_uppercase": "包含大寫字母",
+    "include_numbers": "包含數字 (例如, 123)",
+    "include_symbols": "包含符號 (例如, #$%)",
+    "generate": "產生",
+    "use_password": "使用密碼",
+    "generated_password": "產生的密碼"
+  },
+  "password_item_card": {
+    "username": "使用者名稱",
+    "password": "密碼",
+    "copy_username_aria": "複製使用者名稱",
+    "copy_password_aria": "複製密碼",
+    "show_password_aria": "顯示密碼",
+    "hide_password_aria": "隱藏密碼",
+    "more_actions_aria": "更多操作",
+    "edit": "編輯",
+    "delete": "刪除",
+    "copied_username_message": "使用者名稱",
+    "copied_password_message": "密碼",
+    "created_at": "建立於",
+    "updated_at": "更新於"
+  },
+  "login_view": {
+    "title": "登入到您的帳戶",
+    "username_label": "使用者名稱",
+    "username_placeholder": "輸入您的使用者名稱",
+    "password_label": "主密碼",
+    "password_placeholder": "輸入您的主密碼",
+    "login_button": "登入",
+    "no_account": "還沒有帳戶？",
+    "register_now": "立即註冊",
+    "login_failed": "登入失敗，請檢查您的使用者名稱和密碼。"
+  },
+  "register_view": {
+    "title": "建立您的帳戶",
+    "username_label": "使用者名稱",
+    "username_placeholder": "輸入您的使用者名稱",
+    "email_label": "電子郵件",
+    "email_placeholder": "請輸入您的電子郵件",
+    "password_label": "主密碼",
+    "password_placeholder": "設定一個強大的主密碼",
+    "verification_code_label": "驗證碼",
+    "verification_code_placeholder": "請輸入驗證碼",
+    "send_code_button": "傳送驗證碼",
+    "send_code_button_sending": "傳送中...",
+    "register_button": "註冊",
+    "has_account": "已經有帳戶了？",
+    "login_now": "立即登入",
+    "validation_username_required": "請輸入使用者名稱",
+    "validation_email_required": "請輸入電子郵件",
+    "validation_email_invalid": "請輸入有效的電子郵件地址",
+    "validation_password_required": "請輸入主密碼",
+    "validation_password_min_length": "主密碼長度不能少於8位",
+    "validation_code_required": "請輸入驗證碼",
+    "validation_code_min_length": "驗證碼必須是6位",
+    "registration_success": "註冊成功！現在您可以登入了。",
+    "registration_failed": "註冊失敗。請檢查使用者名稱或電子郵件是否已被佔用，或稍後重試。",
+    "send_code_success": "驗證碼傳送成功！",
+    "send_code_fail": "驗證碼傳送失敗。",
+    "check_input": "請檢查您輸入的內容"
+  },
+  "common": {
+    "cancel": "取消"
+  }
+}

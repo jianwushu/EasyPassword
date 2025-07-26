@@ -16,6 +16,7 @@ import (
 type Storage interface {
 	User() core.UserRepository
 	Vault() core.VaultRepository
+	VerificationCode() core.VerificationCodeRepository
 }
 
 // NewStorage 根据提供的配置创建一个新的存储后端。

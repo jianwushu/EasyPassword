@@ -1,21 +1,21 @@
 <template>
 <div class="dashboard-layout">
   <header class="dashboard-header">
-    <h1 class="dashboard-title">{{ $t('dashboard.title') }}</h1>
+    <h1 class="dashboard-title">{{ t('dashboard.title') }}</h1>
     <div class="toolbar">
       <div class="search-wrapper">
         <SearchIcon :size="18" class="search-icon" />
-        <input v-model="searchQuery" type="text" :placeholder="$t('dashboard.search_placeholder')" class="search-input" />
+        <input v-model="searchQuery" type="text" :placeholder="t('dashboard.search_placeholder')" class="search-input" />
       </div>
 
       <div class="toolbar-actions">
         <n-tooltip trigger="hover" :disabled="!isDesktop">
           <template #trigger>
-            <button @click="promptForRelock" class="icon-button" :aria-label="$t('dashboard.redecrypt_tooltip')">
+            <button @click="promptForRelock" class="icon-button" :aria-label="t('dashboard.redecrypt_tooltip')">
               <KeyIcon :size="18" />
             </button>
           </template>
-          <span>{{ $t('dashboard.redecrypt_tooltip') }}</span>
+          <span>{{ t('dashboard.redecrypt_tooltip') }}</span>
         </n-tooltip>
 
         <div class="divider"></div>
@@ -23,15 +23,15 @@
         <div class="toolbar-icons-desktop">
           <n-tooltip trigger="hover" :disabled="!isDesktop">
             <template #trigger>
-              <button @click="toggleTheme" class="icon-button" :aria-label="$t('dashboard.toggle_theme_tooltip')">
+              <button @click="toggleTheme" class="icon-button" :aria-label="t('dashboard.toggle_theme_tooltip')">
                 <SunIcon v-if="themeMode === 'light'" :size="20" />
                 <MoonIcon v-else :size="20" />
               </button>
             </template>
-            <span>{{ $t('dashboard.toggle_theme_tooltip') }}</span>
+            <span>{{ t('dashboard.toggle_theme_tooltip') }}</span>
           </n-tooltip>
           <n-dropdown :options="languageOptions" @select="handleLanguageSelect" trigger="hover">
-            <button class="icon-button" :aria-label="$t('dashboard.toggle_language_tooltip')">
+            <button class="icon-button" :aria-label="t('dashboard.toggle_language_tooltip')">
               <LanguagesIcon :size="20" />
             </button>
           </n-dropdown>
@@ -60,14 +60,14 @@
       <n-input
         v-model:value="decryptionPassword"
         type="password"
-        :placeholder="$t('dashboard.decrypt_prompt.placeholder')"
+        :placeholder="t('dashboard.decrypt_prompt.placeholder')"
         @keyup.enter="handleDecryptVault"
         size="large"
       />
-      <n-button type="primary" @click="handleDecryptVault" :loading="isLoading" size="large">{{ $t('dashboard.decrypt_prompt.button') }}</n-button>
+      <n-button type="primary" @click="handleDecryptVault" :loading="isLoading" size="large">{{ t('dashboard.decrypt_prompt.button') }}</n-button>
     </div>
     <div v-else-if="filteredItems.length > 0" class="results-container">
-      <h2 class="item-count-title">{{ $t('dashboard.total_items', { count: itemCount }) }}</h2>
+      <h2 class="item-count-title">{{ t('dashboard.total_items', { count: itemCount }) }}</h2>
       <n-virtual-list v-if="useVirtualList" :items="filteredItems" :item-size="180" item-resizable>
         <template #default="{ item }">
           <div :key="item.id" style="padding: 0 8px 16px;">
@@ -92,16 +92,16 @@
       </div>
     </div>
     <div v-else-if="searchQuery" class="empty-state">
-      <p>{{ $t('dashboard.empty_state.no_search_results', { query: searchQuery }) }}</p>
+      <p>{{ t('dashboard.empty_state.no_search_results', { query: searchQuery }) }}</p>
     </div>
     <div v-else class="empty-state">
-      <h2>{{ $t('dashboard.empty_state.title') }}</h2>
-      <p>{{ $t('dashboard.empty_state.subtitle') }}</p>
-      <n-button type="primary" @click="openModal('create')" size="large">{{ $t('dashboard.empty_state.add_first_item_button') }}</n-button>
+      <h2>{{ t('dashboard.empty_state.title') }}</h2>
+      <p>{{ t('dashboard.empty_state.subtitle') }}</p>
+      <n-button type="primary" @click="openModal('create')" size="large">{{ t('dashboard.empty_state.add_first_item_button') }}</n-button>
     </div>
   </main>
 
-  <button class="fab" @click="openModal('create')" :aria-label="$t('dashboard.add_new_item_button')">
+  <button class="fab" @click="openModal('create')" :aria-label="t('dashboard.add_new_item_button')">
     <PlusIcon :size="24" />
   </button>
 
@@ -115,21 +115,21 @@
     :bordered="false"
   >
     <n-form @submit.prevent="handleFormSubmit">
-      <n-form-item :label="$t('dashboard.form.name_label')">
-        <n-input v-model:value="currentItem.name" :placeholder="$t('dashboard.form.name_placeholder')" required />
+      <n-form-item :label="t('dashboard.form.name_label')">
+        <n-input v-model:value="currentItem.name" :placeholder="t('dashboard.form.name_placeholder')" required />
       </n-form-item>
-      <n-form-item :label="$t('dashboard.form.website_label')">
-        <n-input v-model:value="currentItem.website" :placeholder="$t('dashboard.form.website_placeholder')" required />
+      <n-form-item :label="t('dashboard.form.website_label')">
+        <n-input v-model:value="currentItem.website" :placeholder="t('dashboard.form.website_placeholder')" required />
       </n-form-item>
-      <n-form-item :label="$t('dashboard.form.login_label')">
-        <n-input v-model:value="currentItem.account" :placeholder="$t('dashboard.form.login_placeholder')" required />
+      <n-form-item :label="t('dashboard.form.login_label')">
+        <n-input v-model:value="currentItem.account" :placeholder="t('dashboard.form.login_placeholder')" required />
       </n-form-item>
-      <n-form-item :label="$t('dashboard.form.password_label')">
+      <n-form-item :label="t('dashboard.form.password_label')">
         <n-input
           v-model:value="currentItem.password"
           type="password"
           show-password-on="click"
-          :placeholder="$t('dashboard.form.password_placeholder')"
+          :placeholder="t('dashboard.form.password_placeholder')"
           required
         >
           <template #suffix>
@@ -140,19 +140,19 @@
         </n-input>
       </n-form-item>
       <PasswordGenerator v-if="showPasswordGenerator" @password-generated="setFormPassword" />
-      <n-form-item :label="$t('dashboard.form.category_label')">
-        <n-input v-model:value="currentItem.category" :placeholder="$t('dashboard.form.category_placeholder')" />
+      <n-form-item :label="t('dashboard.form.category_label')">
+        <n-input v-model:value="currentItem.category" :placeholder="t('dashboard.form.category_placeholder')" />
       </n-form-item>
-      <n-form-item :label="$t('dashboard.form.master_password_label')">
+      <n-form-item :label="t('dashboard.form.master_password_label')">
         <n-input
           v-model:value="modalMasterPassword"
           type="password"
-          :placeholder="modalMode === 'create' ? $t('dashboard.create_modal.master_password_placeholder') : $t('dashboard.edit_modal.master_password_placeholder')"
+          :placeholder="modalMode === 'create' ? t('dashboard.create_modal.master_password_placeholder') : t('dashboard.edit_modal.master_password_placeholder')"
           required
         />
       </n-form-item>
       <n-space justify="end">
-        <n-button @click="closeModal" :disabled="isLoading">{{ $t('common.cancel') }}</n-button>
+        <n-button @click="closeModal" :disabled="isLoading">{{ t('common.cancel') }}</n-button>
         <n-button type="primary" attr-type="submit" :loading="isLoading">{{ submitButtonText }}</n-button>
       </n-space>
     </n-form>
@@ -195,6 +195,9 @@ const { themeMode, toggleTheme } = inject('theme') as { themeMode: Ref<'light' |
 const languages = [
   { label: 'English', key: 'en' },
   { label: '简体中文', key: 'zh-CN' },
+  { label: '繁體中文', key: 'zh-TW' },
+  { label: '日本語', key: 'ja' },
+  { label: '한국어', key: 'ko' },
 ];
 
 const languageOptions = computed(() => {

@@ -53,6 +53,19 @@ function base64ToArrBuf(base64: string): ArrayBuffer {
     return bytes.buffer;
 }
 
+// --- 辅助函数 ---
+
+/**
+ * 将 ArrayBuffer 转换为十六进制字符串。
+ * @param buffer 要转换的 ArrayBuffer。
+ * @returns 生成的十六进制字符串。
+ */
+function arrBufToHex(buffer: ArrayBuffer): string {
+    return Array.from(new Uint8Array(buffer))
+        .map(b => b.toString(16).padStart(2, '0'))
+        .join('');
+}
+
 // --- 核心加密函数 ---
 
 /**
@@ -79,7 +92,7 @@ export async function deriveKey(masterPassword: string, salt: string): Promise<C
         },
         masterKey,
         { name: "AES-GCM", length: 256 },
-        false,
+        true, // 使密钥可导出，以便可以对其进行哈希。
         ["encrypt", "decrypt"]
     );
 
@@ -153,4 +166,27 @@ export async function decryptVaultData(encryptedDataB64: string, masterPassword:
         // 这个错误是致命的。这意味着主密码错误、数据已损坏或代码中存在错误。
         throw new Error("Decryption failed. Invalid master password or corrupted data.");
     }
+}
+
+/**
+ * 生成一个安全的随机盐。
+ * @returns {string} - 16字节（128位）盐的十六进制编码字符串。
+ */
+export function generateSalt(): string {
+    const salt = window.crypto.getRandomValues(new Uint8Array(16));
+    return arrBufToHex(salt.buffer);
+}
+
+/**
+ * 计算 CryptoKey 的 SHA-256 哈希值。
+ * @param key - 要哈希的 CryptoKey。
+ * @returns {Promise<string>} - 哈希值的十六进制编码字符串。
+ */
+export async function hashKey(key: CryptoKey): Promise<string> {
+    // 请注意，AES-GCM 密钥默认情况下是不可导出的。
+    // 为了对密钥进行哈希，我们需要在派生它时使其可导出。
+    // `deriveKey` 函数需要更新以包含 `extractable: true`。
+    const keyData = await window.crypto.subtle.exportKey("raw", key);
+    const hashBuffer = await window.crypto.subtle.digest("SHA-256", keyData);
+    return arrBufToHex(hashBuffer);
 }

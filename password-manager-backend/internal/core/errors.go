@@ -6,6 +6,7 @@ import "errors"
 var (
 	ErrUserNotFound      = errors.New("user not found")
 	ErrVaultItemNotFound = errors.New("vault item not found")
+	ErrVerificationCodeNotFound = errors.New("verification code not found")
 )
 
 // 当违反唯一约束时返回 DuplicateEntryError。

@@ -1,27 +1,27 @@
 <template>
   <div class="login-container">
-    <h1 class="page-title">{{ $t('app.title') }}</h1>
-    <n-card :title="$t('login_view.title')">
+    <h1 class="page-title">{{ t('app.title') }}</h1>
+    <n-card :title="t('login_view.title')">
       <n-form @submit.prevent="handleLogin">
-        <n-form-item :label="$t('login_view.username_label')">
-          <n-input v-model:value="model.username" :placeholder="$t('login_view.username_placeholder')" />
+        <n-form-item :label="t('login_view.username_label')">
+          <n-input v-model:value="model.username" :placeholder="t('login_view.username_placeholder')" />
         </n-form-item>
-        <n-form-item :label="$t('login_view.password_label')">
+        <n-form-item :label="t('login_view.password_label')">
           <n-input
             type="password"
             v-model:value="model.masterPassword"
-            :placeholder="$t('login_view.password_placeholder')"
+            :placeholder="t('login_view.password_placeholder')"
             show-password-on="click"
           />
         </n-form-item>
         <n-button type="primary" attr-type="submit" block>
-          {{ $t('login_view.login_button') }}
+          {{ t('login_view.login_button') }}
         </n-button>
       </n-form>
       <template #footer>
         <p>
-          {{ $t('login_view.no_account') }}
-          <router-link to="/register">{{ $t('login_view.register_now') }}</router-link>
+          {{ t('login_view.no_account') }}
+          <router-link to="/register">{{ t('login_view.register_now') }}</router-link>
         </p>
       </template>
     </n-card>

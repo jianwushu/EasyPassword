@@ -12,3 +12,7 @@ export const login = (credentials: UserCredentials) => {
 export const getSalt = (username: string) => {
   return apiClient.get(`/auth/salt/${username}`);
 };
+
+export const sendVerificationCode = (data: { email: string }) => {
+  return apiClient.post('/auth/send-verification-code', data);
+};

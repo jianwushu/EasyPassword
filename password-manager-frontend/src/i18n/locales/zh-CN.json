@@ -2,9 +2,6 @@
   "app": {
     "title": "EasyPassword"
   },
-  "app": {
-    "title": "EasyPassword"
-  },
   "dashboard": {
     "title": "密码库",
     "search_placeholder": "在密码库中搜索...",
@@ -117,16 +114,28 @@
     "title": "创建您的账户",
     "username_label": "用户名",
     "username_placeholder": "输入您的用户名",
+    "email_label": "邮箱",
+    "email_placeholder": "请输入您的邮箱",
     "password_label": "主密码",
     "password_placeholder": "设置一个强大的主密码",
+    "verification_code_label": "验证码",
+    "verification_code_placeholder": "请输入验证码",
+    "send_code_button": "发送验证码",
+    "send_code_button_sending": "发送中...",
     "register_button": "注册",
     "has_account": "已经有账户了？",
     "login_now": "立即登录",
     "validation_username_required": "请输入用户名",
+    "validation_email_required": "请输入邮箱",
+    "validation_email_invalid": "请输入有效的邮箱地址",
     "validation_password_required": "请输入主密码",
     "validation_password_min_length": "主密码长度不能少于8位",
+    "validation_code_required": "请输入验证码",
+    "validation_code_min_length": "验证码必须是6位",
     "registration_success": "注册成功！现在您可以登录了。",
-    "registration_failed": "注册失败，请稍后重试。",
+    "registration_failed": "注册失败。请检查用户名或邮箱是否已被占用，或稍后重试。",
+    "send_code_success": "验证码发送成功！",
+    "send_code_fail": "验证码发送失败。",
     "check_input": "请检查您输入的内容"
   },
   "common": {
