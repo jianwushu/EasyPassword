@@ -101,14 +101,15 @@
   },
   "login_view": {
     "title": "アカウントにログイン",
-    "username_label": "ユーザー名",
-    "username_placeholder": "ユーザー名を入力",
+    "identifier_label": "ユーザー名またはメールアドレス",
+    "identifier_placeholder": "ユーザー名またはメールアドレスを入力",
     "password_label": "マスターパスワード",
     "password_placeholder": "マスターパスワードを入力",
     "login_button": "ログイン",
     "no_account": "アカウントをお持ちでないですか？",
     "register_now": "今すぐ登録",
-    "login_failed": "ログインに失敗しました。ユーザー名とパスワードを確認してください。"
+    "login_failed": "ログインに失敗しました。ユーザー名とパスワードを確認してください。",
+    "forgot_password": "パスワードをお忘れですか？"
   },
   "register_view": {
     "title": "アカウントを作成",
@@ -139,6 +140,28 @@
     "check_input": "入力内容を確認してください"
   },
   "common": {
-    "cancel": "キャンセル"
+    "cancel": "キャンセル",
+    "email": "メールアドレス",
+    "emailPlaceholder": "メールアドレスを入力してください"
+  },
+  "forgotPassword": {
+    "title": "パスワードをお忘れですか",
+    "description": "メールアドレスを入力してください。パスワードをリセットするための手順をお送りします。",
+    "submitButton": "リセットメールを送信",
+    "backToLogin": "ログインに戻る",
+    "successMessage": "メールアドレスが存在する場合、パスワードリセットのメールが送信されます。",
+    "errorMessage": "リクエストに失敗しました。後でもう一度お試しください。"
+  },
+  "resetPassword": {
+    "title": "パスワードをリセット",
+    "newPassword": "新しいパスワード",
+    "newPasswordPlaceholder": "新しいパスワードを入力してください",
+    "confirmPassword": "新しいパスワードの確認",
+    "confirmPasswordPlaceholder": "新しいパスワードを再入力してください",
+    "submitButton": "パスワードをリセット",
+    "successMessage": "パスワードが正常にリセットされました！新しいパスワードでログインできます。",
+    "errorMessage": "パスワードのリセットに失敗しました。リンクの有効期限が切れているか、無効な可能性があります。",
+    "passwordMismatch": "入力された2つのパスワードが一致しません。",
+    "backToLogin": "ログインに戻る"
   }
 }

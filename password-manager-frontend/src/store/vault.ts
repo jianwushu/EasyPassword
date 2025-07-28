@@ -39,7 +39,6 @@ export const useVaultStore = defineStore('vault', {
       try {
         const response = await api.getVault();
         this.setEncryptedItems(response.data || []);
-        console.log('Fetched encrypted items:', this.encryptedItems);
         // 获取新数据时清除已解密的数据
         this.setDecryptedItems([]);
       } catch (error) {

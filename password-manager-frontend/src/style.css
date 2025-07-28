@@ -38,6 +38,11 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+ /* Fix browser compatibility issues */
+ -webkit-text-size-adjust: 100%;
+ text-size-adjust: 100%;
+ -webkit-user-select: none;
+ user-select: none;
 }
 
 #app {

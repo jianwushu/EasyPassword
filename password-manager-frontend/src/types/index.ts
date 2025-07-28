@@ -1,9 +1,14 @@
-export interface UserCredentials {
+export interface RegisterRequestPayload {
   username: string;
-  email?: string;
+  email: string;
   master_key_hash: string;
-  master_salt?: string;
-  code?: string;
+  master_salt: string;
+  code: string;
+}
+
+export interface LoginRequestPayload {
+  identifier: string;
+  master_key_hash: string;
 }
 
 export interface VaultItem {

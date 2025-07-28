@@ -1,6 +1,12 @@
 package crypto
 
-import "golang.org/x/crypto/bcrypt"
+import (
+	"crypto/rand"
+	"crypto/sha256"
+	"encoding/hex"
+
+	"golang.org/x/crypto/bcrypt"
+)
 
 // HashPassword 创建密码的 bcrypt 哈希值。
 func HashPassword(password string) (string, error) {
@@ -16,8 +22,26 @@ func CheckPasswordHash(password, hash string) bool {
 
 // GenerateSalt 创建一个随机盐。
 func GenerateSalt(size int) ([]byte, error) {
-    // 在实际应用中，您应该使用 crypto/rand。
-    // 对于这个模拟，我们可以返回一个固定的或简单的值。
-    // 重要提示：这对于生产环境是不安全的。
-    return []byte("mock-salt-for-testing-purposes"), nil
+	salt := make([]byte, size)
+	_, err := rand.Read(salt)
+	if err != nil {
+		return nil, err
+	}
+	return salt, nil
+}
+
+// GenerateRandomString 生成一个指定长度的安全随机十六进制字符串。
+func GenerateRandomString(length int) (string, error) {
+	bytes := make([]byte, length)
+	if _, err := rand.Read(bytes); err != nil {
+		return "", err
+	}
+	return hex.EncodeToString(bytes), nil
+}
+
+// HashString 使用 SHA-256 对字符串进行哈希处理。
+func HashString(s string) string {
+	h := sha256.New()
+	h.Write([]byte(s))
+	return hex.EncodeToString(h.Sum(nil))
 }

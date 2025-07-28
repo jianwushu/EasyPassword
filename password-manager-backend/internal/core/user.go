@@ -14,8 +14,8 @@ type User struct {
 	AuthHash   string    `gorm:"type:text;not null"`
 	MasterSalt []byte `gorm:"type:bytea;not null"`
 	// for password reset
-	ResetPasswordToken          *string
-	ResetPasswordTokenExpiresAt *time.Time
+	ResetPasswordToken          *string    `gorm:"type:varchar(255);unique_index"`
+	ResetPasswordTokenExpiresAt *time.Time `gorm:"index"`
 	CreatedAt                   time.Time `gorm:"autoCreateTime"`
 	UpdatedAt                   time.Time `gorm:"autoUpdateTime"`
 }

@@ -101,14 +101,15 @@
   },
   "login_view": {
     "title": "Login to Your Account",
-    "username_label": "Username",
-    "username_placeholder": "Enter your username",
+    "identifier_label": "Username or Email",
+    "identifier_placeholder": "Enter your username or email",
     "password_label": "Master Password",
     "password_placeholder": "Enter your master password",
     "login_button": "Login",
     "no_account": "Don't have an account?",
     "register_now": "Register now",
-    "login_failed": "Login failed, please check your username and password."
+    "login_failed": "Login failed, please check your username and password.",
+    "forgot_password": "Forgot Password?"
   },
   "register_view": {
     "title": "Create Your Account",
@@ -139,6 +140,28 @@
     "check_input": "Please check your input"
   },
   "common": {
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "email": "Email",
+    "emailPlaceholder": "Please enter your email"
+  },
+  "forgotPassword": {
+    "title": "Forgot Password",
+    "description": "Please enter your email address and we will send you instructions to reset your password.",
+    "submitButton": "Send Reset Email",
+    "backToLogin": "Back to Login",
+    "successMessage": "If the email exists, you will receive a password reset email.",
+    "errorMessage": "Request failed, please try again later."
+  },
+  "resetPassword": {
+    "title": "Reset Password",
+    "newPassword": "New Password",
+    "newPasswordPlaceholder": "Enter your new password",
+    "confirmPassword": "Confirm New Password",
+    "confirmPasswordPlaceholder": "Enter your new password again",
+    "submitButton": "Reset Password",
+    "successMessage": "Password reset successfully! You can now log in with your new password.",
+    "errorMessage": "Password reset failed. The link may be expired or invalid.",
+    "passwordMismatch": "The two passwords do not match.",
+    "backToLogin": "Back to Login"
   }
 }

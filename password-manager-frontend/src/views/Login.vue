@@ -1,10 +1,11 @@
 <template>
   <div class="login-container">
+    <LanguageSwitcher />
     <h1 class="page-title">{{ t('app.title') }}</h1>
     <n-card :title="t('login_view.title')">
       <n-form @submit.prevent="handleLogin">
-        <n-form-item :label="t('login_view.username_label')">
-          <n-input v-model:value="model.username" :placeholder="t('login_view.username_placeholder')" />
+        <n-form-item :label="t('login_view.identifier_label')">
+          <n-input v-model:value="model.identifier" :placeholder="t('login_view.identifier_placeholder')" />
         </n-form-item>
         <n-form-item :label="t('login_view.password_label')">
           <n-input
@@ -19,10 +20,13 @@
         </n-button>
       </n-form>
       <template #footer>
-        <p>
-          {{ t('login_view.no_account') }}
-          <router-link to="/register">{{ t('login_view.register_now') }}</router-link>
-        </p>
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <p>
+            {{ t('login_view.no_account') }}
+            <router-link to="/register">{{ t('login_view.register_now') }}</router-link>
+          </p>
+          <router-link to="/forgot-password">{{ t('login_view.forgot_password') }}</router-link>
+        </div>
       </template>
     </n-card>
   </div>
@@ -34,9 +38,10 @@ import { useI18n } from 'vue-i18n';
 import { NCard, NForm, NFormItem, NInput, NButton, useMessage } from 'naive-ui';
 import { useAuthStore } from '../store/auth';
 import { useRouter } from 'vue-router';
+import LanguageSwitcher from '../components/LanguageSwitcher.vue';
 
 const model = ref({
-  username: '',
+  identifier: '',
   masterPassword: '',
 });
 
@@ -47,8 +52,7 @@ const { t } = useI18n();
 
 const handleLogin = async () => {
   try {
-    console.log('登录数据:', model.value);
-    await authStore.login(model.value.username, model.value.masterPassword);
+    await authStore.login(model.value.identifier, model.value.masterPassword);
     // 登录成功后，路由守卫会自动处理跳转
     router.push('/');
   } catch (error) {

@@ -1,5 +1,6 @@
 <template>
   <div class="register-container">
+    <LanguageSwitcher />
     <h1 class="page-title">{{ t('app.title') }}</h1>
     <n-card :title="t('register_view.title')">
       <n-form ref="formRef" :model="model" :rules="rules" @submit.prevent="handleRegister">
@@ -54,6 +55,7 @@ import {
 } from 'naive-ui';
 import { useAuthStore } from '../store/auth';
 import { useRouter } from 'vue-router';
+import LanguageSwitcher from '../components/LanguageSwitcher.vue';
 
 const { t } = useI18n();
 const formRef = ref<FormInst | null>(null);

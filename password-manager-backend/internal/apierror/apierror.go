@@ -34,5 +34,7 @@ var (
 	ErrUserOrEmailExists       = New(http.StatusConflict, "Username or email already exists")
 	ErrInvalidVerificationCode = New(http.StatusBadRequest, "Invalid verification code")
 	ErrVerificationCodeExpired = New(http.StatusBadRequest, "Verification code has expired")
+	ErrInvalidResetToken       = New(http.StatusBadRequest, "Invalid or expired password reset token")
+	ErrResetTokenExpired       = New(http.StatusBadRequest, "Password reset token has expired")
 	ErrInternalServer          = New(http.StatusInternalServerError, "An unexpected error occurred")
 )

@@ -18,6 +18,7 @@ type Config struct {
 	SMTPUser       string
 	SMTPPassword   string
 	SMTPFrom       string
+	FrontendURL    string
 }
 
 // Load 从环境变量加载配置。
@@ -75,6 +76,11 @@ func Load() *Config {
 		smtpFrom = "no-reply@easypassword.com" // dev default
 	}
 
+	frontendURL := os.Getenv("FRONTEND_URL")
+	if frontendURL == "" {
+		frontendURL = "http://localhost:5173" // dev default
+	}
+
 	return &Config{
 		DatabaseURL:    dbURL,
 		JWTSecret:      jwtSecret,
@@ -86,5 +92,6 @@ func Load() *Config {
 		SMTPUser:       smtpUser,
 		SMTPPassword:   smtpPassword,
 		SMTPFrom:       smtpFrom,
+		FrontendURL:    frontendURL,
 	}
 }

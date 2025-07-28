@@ -66,6 +66,23 @@ function arrBufToHex(buffer: ArrayBuffer): string {
         .join('');
 }
 
+/**
+ * 将十六进制字符串转换为 ArrayBuffer。
+ * @param hex 要转换的十六进制字符串。
+ * @returns 生成的 ArrayBuffer。
+ */
+function hexToArrBuf(hex: string): ArrayBuffer {
+    if (hex.length % 2 !== 0) {
+        throw new Error("Invalid hex string");
+    }
+    const buffer = new ArrayBuffer(hex.length / 2);
+    const view = new DataView(buffer);
+    for (let i = 0; i < hex.length; i += 2) {
+        view.setUint8(i / 2, parseInt(hex.substring(i, i + 2), 16));
+    }
+    return buffer;
+}
+
 // --- 核心加密函数 ---
 
 /**
@@ -82,11 +99,10 @@ export async function deriveKey(masterPassword: string, salt: string): Promise<C
         false,
         ["deriveKey"]
     );
-
     const derivedKey = await window.crypto.subtle.deriveKey(
         {
             name: "PBKDF2",
-            salt: strToArrBuf(salt),
+            salt: hexToArrBuf(salt), // 使用 hexToArrBuf 修复了盐的处理
             iterations: 100000,
             hash: "SHA-256",
         },
