@@ -1,0 +1,167 @@
+{
+  "app": {
+    "title": "EasyPassword"
+  },
+  "dashboard": {
+    "title": "保管庫",
+    "search_placeholder": "保管庫を検索...",
+    "total_items": "{count} 個のアイテム",
+    "redecrypt_tooltip": "再復号化",
+    "toggle_theme_tooltip": "テーマを切り替え",
+    "toggle_language_tooltip": "言語を切り替え",
+    "logout_tooltip": "ログアウト",
+    "add_new_item_button": "新しいアイテムを追加",
+    "decrypt_prompt": {
+      "placeholder": "マスターパスワードを入力して復号化",
+      "button": "保管庫を復号化"
+    },
+    "empty_state": {
+      "title": "保管庫は空です",
+      "subtitle": "最初のパスワードを追加して始めましょう。",
+      "no_search_results": "「{query}」に一致する結果は見つかりませんでした",
+      "add_first_item_button": "最初のアイテムを追加"
+    },
+    "create_modal": {
+      "title": "新しい保管庫アイテムを作成",
+      "master_password_placeholder": "マスターパスワードを入力して暗号化",
+      "create_button": "アイテムを作成"
+    },
+    "edit_modal": {
+      "title": "保管庫アイテムを編集",
+      "master_password_placeholder": "マスターパスワードを入力して変更を保存",
+      "save_button": "変更を保存"
+    },
+    "form": {
+      "name_label": "名前",
+      "name_placeholder": "例：Googleアカウント",
+      "website_label": "ウェブサイト",
+      "website_placeholder": "例：https://google.com",
+      "login_label": "ログイン/ユーザー名",
+      "login_placeholder": "",
+      "password_label": "パスワード",
+      "password_placeholder": "強力なパスワードを入力",
+      "category_label": "カテゴリ",
+      "category_placeholder": "例：ソーシャルメディア",
+      "master_password_label": "マスターパスワード"
+    },
+    "messages": {
+      "copy_success": "{type} をクリップボードにコピーしました！",
+      "copy_error": "{type} のコピーに失敗しました。",
+      "master_password_required_creation": "アイテムを作成するにはマスターパスワードが必要です。",
+      "item_created_success": "アイテムが正常に作成されました！",
+      "item_created_fail": "アイテムの作成に失敗しました。",
+      "vault_fetch_fail": "保管庫の取得に失敗しました。",
+      "master_password_required_decryption": "保管庫を復号化するにはマスターパスワードが必要です。",
+      "vault_decrypted_success": "保管庫が正常に復号化されました！",
+      "vault_decrypted_fail": "保管庫の復号化に失敗しました。パスワードを確認してください。",
+      "master_password_required_update": "アイテムを更新するにはマスターパスワードが必要です。",
+      "item_updated_success": "アイテムが正常に更新されました！",
+      "item_updated_fail": "アイテムの更新に失敗しました。",
+      "item_deleted_success": "アイテムが正常に削除されました。",
+      "item_deleted_fail": "アイテムの削除に失敗しました。",
+      "vault_locked_success": "保管庫が正常にロックされました。",
+      "clipboard_cleared": "セキュリティのため、クリップボードがクリアされました。"
+    },
+    "delete_dialog": {
+      "title": "アイテムを削除",
+      "content": "このアイテムを削除してもよろしいですか？この操作は元に戻せません。",
+      "confirm_button": "削除"
+    },
+    "relock_dialog": {
+      "title": "保管庫をロック",
+      "content": "保管庫をロックしてもよろしいですか？アイテムを表示するには、再度マスターパスワードを入力する必要があります。",
+      "confirm_button": "ロック"
+    }
+  },
+  "password_generator": {
+    "title": "パスワードジェネレーター",
+    "card_title": "安全なパスワードを生成",
+    "length": "長さ",
+    "include_uppercase": "大文字を含める",
+    "include_numbers": "数字を含める (例: 123)",
+    "include_symbols": "記号を含める (例: #$%)",
+    "generate": "生成",
+    "use_password": "パスワードを使用",
+    "generated_password": "生成されたパスワード"
+  },
+  "password_item_card": {
+    "username": "ユーザー名",
+    "password": "パスワード",
+    "copy_username_aria": "ユーザー名をコピー",
+    "copy_password_aria": "パスワードをコピー",
+    "show_password_aria": "パスワードを表示",
+    "hide_password_aria": "パスワードを非表示",
+    "more_actions_aria": "その他のアクション",
+    "edit": "編集",
+    "delete": "削除",
+    "copied_username_message": "ユーザー名",
+    "copied_password_message": "パスワード",
+    "created_at": "作成日",
+    "updated_at": "更新日"
+  },
+  "login_view": {
+    "title": "アカウントにログイン",
+    "identifier_label": "ユーザー名またはメールアドレス",
+    "identifier_placeholder": "ユーザー名またはメールアドレスを入力",
+    "password_label": "マスターパスワード",
+    "password_placeholder": "マスターパスワードを入力",
+    "login_button": "ログイン",
+    "no_account": "アカウントをお持ちでないですか？",
+    "register_now": "今すぐ登録",
+    "login_failed": "ログインに失敗しました。ユーザー名とパスワードを確認してください。",
+    "forgot_password": "パスワードをお忘れですか？"
+  },
+  "register_view": {
+    "title": "アカウントを作成",
+    "username_label": "ユーザー名",
+    "username_placeholder": "ユーザー名を入力",
+    "email_label": "メールアドレス",
+    "email_placeholder": "メールアドレスを入力してください",
+    "password_label": "マスターパスワード",
+    "password_placeholder": "強力なマスターパスワードを設定",
+    "verification_code_label": "認証コード",
+    "verification_code_placeholder": "認証コードを入力してください",
+    "send_code_button": "認証コードを送信",
+    "send_code_button_sending": "送信中...",
+    "register_button": "登録",
+    "has_account": "すでにアカウントをお持ちですか？",
+    "login_now": "今すぐログイン",
+    "validation_username_required": "ユーザー名を入力してください",
+    "validation_email_required": "メールアドレスを入力してください",
+    "validation_email_invalid": "有効なメールアドレスを入力してください",
+    "validation_password_required": "マスターパスワードを入力してください",
+    "validation_password_min_length": "マスターパスワードは8文字以上である必要があります",
+    "validation_code_required": "認証コードを入力してください",
+    "validation_code_min_length": "認証コードは6文字である必要があります",
+    "registration_success": "登録に成功しました！ログインしてください。",
+    "registration_failed": "登録に失敗しました。ユーザー名またはメールアドレスが既に使用されているか、後でもう一度お試しください。",
+    "send_code_success": "認証コードが正常に送信されました！",
+    "send_code_fail": "認証コードの送信に失敗しました。",
+    "check_input": "入力内容を確認してください"
+  },
+  "common": {
+    "cancel": "キャンセル",
+    "email": "メールアドレス",
+    "emailPlaceholder": "メールアドレスを入力してください"
+  },
+  "forgotPassword": {
+    "title": "パスワードをお忘れですか",
+    "description": "メールアドレスを入力してください。パスワードをリセットするための手順をお送りします。",
+    "submitButton": "リセットメールを送信",
+    "backToLogin": "ログインに戻る",
+    "successMessage": "メールアドレスが存在する場合、パスワードリセットのメールが送信されます。",
+    "errorMessage": "リクエストに失敗しました。後でもう一度お試しください。"
+  },
+  "resetPassword": {
+    "title": "パスワードをリセット",
+    "newPassword": "新しいパスワード",
+    "newPasswordPlaceholder": "新しいパスワードを入力してください",
+    "confirmPassword": "新しいパスワードの確認",
+    "confirmPasswordPlaceholder": "新しいパスワードを再入力してください",
+    "submitButton": "パスワードをリセット",
+    "successMessage": "パスワードが正常にリセットされました！新しいパスワードでログインできます。",
+    "errorMessage": "パスワードのリセットに失敗しました。リンクの有効期限が切れているか、無効な可能性があります。",
+    "passwordMismatch": "入力された2つのパスワードが一致しません。",
+    "backToLogin": "ログインに戻る"
+  }
+}

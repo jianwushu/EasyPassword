@@ -1,0 +1,167 @@
+{
+  "app": {
+    "title": "EasyPassword"
+  },
+  "dashboard": {
+    "title": "密码库",
+    "search_placeholder": "在密码库中搜索...",
+    "total_items": "{count} 个项目",
+    "redecrypt_tooltip": "重新解密",
+    "toggle_theme_tooltip": "切换主题",
+    "toggle_language_tooltip": "切换语言",
+    "logout_tooltip": "退出登录",
+    "add_new_item_button": "添加新项目",
+    "decrypt_prompt": {
+      "placeholder": "输入您的主密码以解密",
+      "button": "解密密码库"
+    },
+    "empty_state": {
+      "title": "您的密码库是空的",
+      "subtitle": "从添加您的第一个密码开始。",
+      "no_search_results": "找不到与 “{query}” 相关的结果",
+      "add_first_item_button": "添加第一个项目"
+    },
+    "create_modal": {
+      "title": "创建新的密码库项目",
+      "master_password_placeholder": "输入您的主密码以加密",
+      "create_button": "创建项目"
+    },
+    "edit_modal": {
+      "title": "编辑密码库项目",
+      "master_password_placeholder": "输入主密码以保存更改",
+      "save_button": "保存更改"
+    },
+    "form": {
+      "name_label": "名称",
+      "name_placeholder": "例如, 谷歌账户",
+      "website_label": "网站",
+      "website_placeholder": "例如, https://google.com",
+      "login_label": "登录名/用户名",
+      "login_placeholder": "",
+      "password_label": "密码",
+      "password_placeholder": "输入一个强密码",
+      "category_label": "类别",
+      "category_placeholder": "例如, 社交媒体",
+      "master_password_label": "主密码"
+    },
+    "messages": {
+      "copy_success": "{type} 已复制到剪贴板！",
+      "copy_error": "复制 {type} 失败。",
+      "master_password_required_creation": "创建项目需要主密码。",
+      "item_created_success": "项目创建成功！",
+      "item_created_fail": "创建项目失败。",
+      "vault_fetch_fail": "获取密码库失败。",
+      "master_password_required_decryption": "解密密码库需要主密码。",
+      "vault_decrypted_success": "密码库解密成功！",
+      "vault_decrypted_fail": "密码库解密失败。请检查您的密码。",
+      "master_password_required_update": "更新项目需要主密码。",
+      "item_updated_success": "项目更新成功！",
+      "item_updated_fail": "更新项目失败。",
+      "item_deleted_success": "项目删除成功。",
+      "item_deleted_fail": "删除项目失败。",
+      "vault_locked_success": "密码库已成功锁定。",
+      "clipboard_cleared": "为了安全，剪贴板已被清除。"
+    },
+    "delete_dialog": {
+      "title": "删除项目",
+      "content": "您确定要删除此项目吗？此操作无法撤销。",
+      "confirm_button": "删除"
+    },
+    "relock_dialog": {
+      "title": "锁定密码库",
+      "content": "您确定要锁定密码库吗？您需要重新输入主密码才能查看项目。",
+      "confirm_button": "锁定"
+    }
+  },
+  "password_generator": {
+    "title": "密码生成器",
+    "card_title": "生成安全密码",
+    "length": "长度",
+    "include_uppercase": "包含大写字母",
+    "include_numbers": "包含数字 (例如, 123)",
+    "include_symbols": "包含符号 (例如, '#$%'%)",
+    "generate": "生成",
+    "use_password": "使用密码",
+    "generated_password": "生成的密码"
+  },
+  "password_item_card": {
+    "username": "用户名",
+    "password": "密码",
+    "copy_username_aria": "复制用户名",
+    "copy_password_aria": "复制密码",
+    "show_password_aria": "显示密码",
+    "hide_password_aria": "隐藏密码",
+    "more_actions_aria": "更多操作",
+    "edit": "编辑",
+    "delete": "删除",
+    "copied_username_message": "用户名",
+    "copied_password_message": "密码",
+    "created_at": "创建于",
+    "updated_at": "更新于"
+  },
+  "login_view": {
+    "title": "登录到您的账户",
+    "identifier_label": "用户名或邮箱",
+    "identifier_placeholder": "输入您的用户名或邮箱",
+    "password_label": "主密码",
+    "password_placeholder": "输入您的主密码",
+    "login_button": "登录",
+    "no_account": "还没有账户？",
+    "register_now": "立即注册",
+    "login_failed": "登录失败，请检查您的用户名和密码。",
+    "forgot_password": "忘记密码？"
+  },
+  "register_view": {
+    "title": "创建您的账户",
+    "username_label": "用户名",
+    "username_placeholder": "输入您的用户名",
+    "email_label": "邮箱",
+    "email_placeholder": "请输入您的邮箱",
+    "password_label": "主密码",
+    "password_placeholder": "设置一个强大的主密码",
+    "verification_code_label": "验证码",
+    "verification_code_placeholder": "请输入验证码",
+    "send_code_button": "发送验证码",
+    "send_code_button_sending": "发送中...",
+    "register_button": "注册",
+    "has_account": "已经有账户了？",
+    "login_now": "立即登录",
+    "validation_username_required": "请输入用户名",
+    "validation_email_required": "请输入邮箱",
+    "validation_email_invalid": "请输入有效的邮箱地址",
+    "validation_password_required": "请输入主密码",
+    "validation_password_min_length": "主密码长度不能少于8位",
+    "validation_code_required": "请输入验证码",
+    "validation_code_min_length": "验证码必须是6位",
+    "registration_success": "注册成功！现在您可以登录了。",
+    "registration_failed": "注册失败。请检查用户名或邮箱是否已被占用，或稍后重试。",
+    "send_code_success": "验证码发送成功！",
+    "send_code_fail": "验证码发送失败。",
+    "check_input": "请检查您输入的内容"
+  },
+  "common": {
+    "cancel": "取消",
+    "email": "邮箱",
+    "emailPlaceholder": "请输入您的邮箱"
+  },
+  "forgotPassword": {
+    "title": "忘记密码",
+    "description": "请输入您的邮箱地址，我们将向您发送重置密码的说明。",
+    "submitButton": "发送重置邮件",
+    "backToLogin": "返回登录",
+    "successMessage": "如果该邮箱存在，您将会收到一封重置密码的邮件。",
+    "errorMessage": "请求失败，请稍后重试。"
+  },
+  "resetPassword": {
+    "title": "重置密码",
+    "newPassword": "新密码",
+    "newPasswordPlaceholder": "请输入您的新密码",
+    "confirmPassword": "确认新密码",
+    "confirmPasswordPlaceholder": "请再次输入您的新密码",
+    "submitButton": "重置密码",
+    "successMessage": "密码重置成功！您现在可以使用新密码登录。",
+    "errorMessage": "密码重置失败，链接可能已过期或无效。",
+    "passwordMismatch": "两次输入的密码不匹配。",
+    "backToLogin": "返回登录"
+  }
+}

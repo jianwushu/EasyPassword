@@ -1,0 +1,167 @@
+{
+  "app": {
+    "title": "EasyPassword"
+  },
+  "dashboard": {
+    "title": "보관소",
+    "search_placeholder": "보관소에서 검색...",
+    "total_items": "{count}개 항목",
+    "redecrypt_tooltip": "재복호화",
+    "toggle_theme_tooltip": "테마 전환",
+    "toggle_language_tooltip": "언어 전환",
+    "logout_tooltip": "로그아웃",
+    "add_new_item_button": "새 항목 추가",
+    "decrypt_prompt": {
+      "placeholder": "마스터 비밀번호를 입력하여 복호화",
+      "button": "보관소 복호화"
+    },
+    "empty_state": {
+      "title": "보관소가 비어 있습니다",
+      "subtitle": "첫 번째 비밀번호를 추가하여 시작하세요.",
+      "no_search_results": "'{query}'에 대한 검색 결과가 없습니다",
+      "add_first_item_button": "첫 항목 추가"
+    },
+    "create_modal": {
+      "title": "새 보관소 항목 만들기",
+      "master_password_placeholder": "마스터 비밀번호를 입력하여 암호화",
+      "create_button": "항목 만들기"
+    },
+    "edit_modal": {
+      "title": "보관소 항목 편집",
+      "master_password_placeholder": "변경 사항을 저장하려면 마스터 비밀번호를 입력하세요",
+      "save_button": "변경 사항 저장"
+    },
+    "form": {
+      "name_label": "이름",
+      "name_placeholder": "예: 구글 계정",
+      "website_label": "웹사이트",
+      "website_placeholder": "예: https://google.com",
+      "login_label": "로그인/사용자 이름",
+      "login_placeholder": "",
+      "password_label": "비밀번호",
+      "password_placeholder": "강력한 비밀번호를 입력하세요",
+      "category_label": "카테고리",
+      "category_placeholder": "예: 소셜 미디어",
+      "master_password_label": "마스터 비밀번호"
+    },
+    "messages": {
+      "copy_success": "{type}이(가) 클립보드에 복사되었습니다!",
+      "copy_error": "{type} 복사에 실패했습니다.",
+      "master_password_required_creation": "항목을 만들려면 마스터 비밀번호가 필요합니다.",
+      "item_created_success": "항목이 성공적으로 만들어졌습니다!",
+      "item_created_fail": "항목 만들기에 실패했습니다.",
+      "vault_fetch_fail": "보관소를 가져오는 데 실패했습니다.",
+      "master_password_required_decryption": "보관소를 복호화하려면 마스터 비밀번호가 필요합니다.",
+      "vault_decrypted_success": "보관소가 성공적으로 복호화되었습니다!",
+      "vault_decrypted_fail": "보관소 복호화에 실패했습니다. 비밀번호를 확인하세요.",
+      "master_password_required_update": "항목을 업데이트하려면 마스터 비밀번호가 필요합니다.",
+      "item_updated_success": "항목이 성공적으로 업데이트되었습니다!",
+      "item_updated_fail": "항목 업데이트에 실패했습니다.",
+      "item_deleted_success": "항목이 성공적으로 삭제되었습니다.",
+      "item_deleted_fail": "항목 삭제에 실패했습니다.",
+      "vault_locked_success": "보관소가 성공적으로 잠겼습니다.",
+      "clipboard_cleared": "보안을 위해 클립보드가 지워졌습니다."
+    },
+    "delete_dialog": {
+      "title": "항목 삭제",
+      "content": "이 항목을 삭제하시겠습니까? 이 작업은 되돌릴 수 없습니다.",
+      "confirm_button": "삭제"
+    },
+    "relock_dialog": {
+      "title": "보관소 잠금",
+      "content": "보관소를 잠그시겠습니까? 항목을 보려면 마스터 비밀번호를 다시 입력해야 합니다.",
+      "confirm_button": "잠금"
+    }
+  },
+  "password_generator": {
+    "title": "비밀번호 생성기",
+    "card_title": "안전한 비밀번호 생성",
+    "length": "길이",
+    "include_uppercase": "대문자 포함",
+    "include_numbers": "숫자 포함 (예: 123)",
+    "include_symbols": "기호 포함 (예: #$%)",
+    "generate": "생성",
+    "use_password": "비밀번호 사용",
+    "generated_password": "생성된 비밀번호"
+  },
+  "password_item_card": {
+    "username": "사용자 이름",
+    "password": "비밀번호",
+    "copy_username_aria": "사용자 이름 복사",
+    "copy_password_aria": "비밀번호 복사",
+    "show_password_aria": "비밀번호 표시",
+    "hide_password_aria": "비밀번호 숨기기",
+    "more_actions_aria": "추가 작업",
+    "edit": "편집",
+    "delete": "삭제",
+    "copied_username_message": "사용자 이름",
+    "copied_password_message": "비밀번호",
+    "created_at": "생성일",
+    "updated_at": "업데이트됨"
+  },
+  "login_view": {
+    "title": "계정에 로그인",
+    "identifier_label": "사용자 이름 또는 이메일",
+    "identifier_placeholder": "사용자 이름 또는 이메일을 입력하세요",
+    "password_label": "마스터 비밀번호",
+    "password_placeholder": "마스터 비밀번호를 입력하세요",
+    "login_button": "로그인",
+    "no_account": "계정이 없으신가요?",
+    "register_now": "지금 등록",
+    "login_failed": "로그인에 실패했습니다. 사용자 이름과 비밀번호를 확인하세요.",
+    "forgot_password": "비밀번호를 잊으셨나요?"
+  },
+  "register_view": {
+    "title": "계정 만들기",
+    "username_label": "사용자 이름",
+    "username_placeholder": "사용자 이름을 입력하세요",
+    "email_label": "이메일",
+    "email_placeholder": "이메일을 입력하세요",
+    "password_label": "마스터 비밀번호",
+    "password_placeholder": "강력한 마스터 비밀번호를 설정하세요",
+    "verification_code_label": "인증 코드",
+    "verification_code_placeholder": "인증 코드를 입력하세요",
+    "send_code_button": "인증 코드 보내기",
+    "send_code_button_sending": "보내는 중...",
+    "register_button": "등록",
+    "has_account": "이미 계정이 있으신가요?",
+    "login_now": "지금 로그인",
+    "validation_username_required": "사용자 이름을 입력하세요",
+    "validation_email_required": "이메일을 입력하세요",
+    "validation_email_invalid": "유효한 이메일 주소를 입력하세요",
+    "validation_password_required": "마스터 비밀번호를 입력하세요",
+    "validation_password_min_length": "마스터 비밀번호는 8자 이상이어야 합니다",
+    "validation_code_required": "인증 코드를 입력하세요",
+    "validation_code_min_length": "인증 코드는 6자여야 합니다",
+    "registration_success": "등록에 성공했습니다! 이제 로그인할 수 있습니다.",
+    "registration_failed": "등록에 실패했습니다. 사용자 이름이나 이메일이 이미 사용 중인지 확인하거나 나중에 다시 시도하세요.",
+    "send_code_success": "인증 코드가 성공적으로 전송되었습니다!",
+    "send_code_fail": "인증 코드 전송에 실패했습니다.",
+    "check_input": "입력 내용을 확인하세요"
+  },
+  "common": {
+    "cancel": "취소",
+    "email": "이메일",
+    "emailPlaceholder": "이메일을 입력하세요"
+  },
+  "forgotPassword": {
+    "title": "비밀번호를 잊으셨나요",
+    "description": "이메일 주소를 입력하시면 비밀번호 재설정 지침을 보내드립니다.",
+    "submitButton": "재설정 이메일 보내기",
+    "backToLogin": "로그인으로 돌아가기",
+    "successMessage": "이메일이 존재하면 비밀번호 재설정 이메일을 받게 됩니다.",
+    "errorMessage": "요청에 실패했습니다. 나중에 다시 시도해주세요."
+  },
+  "resetPassword": {
+    "title": "비밀번호 재설정",
+    "newPassword": "새 비밀번호",
+    "newPasswordPlaceholder": "새 비밀번호를 입력하세요",
+    "confirmPassword": "새 비밀번호 확인",
+    "confirmPasswordPlaceholder": "새 비밀번호를 다시 입력하세요",
+    "submitButton": "비밀번호 재설정",
+    "successMessage": "비밀번호가 성공적으로 재설정되었습니다! 이제 새 비밀번호로 로그인할 수 있습니다.",
+    "errorMessage": "비밀번호 재설정에 실패했습니다. 링크가 만료되었거나 유효하지 않을 수 있습니다.",
+    "passwordMismatch": "두 비밀번호가 일치하지 않습니다.",
+    "backToLogin": "로그인으로 돌아가기"
+  }
+}

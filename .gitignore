@@ -18,7 +18,16 @@
 /password-manager-frontend/yarn-error.log*
 /password-manager-frontend/pnpm-debug.log*
 /password-manager-frontend/lerna-debug.log*
-
+# Node.js extension
+/password-manager-extension/node_modules
+/password-manager-extension/dist
+/password-manager-extension/dist-ssr
+/password-manager-extension/*.local
+/password-manager-extension/npm-debug.log*
+/password-manager-extension/yarn-debug.log*
+/password-manager-extension/yarn-error.log*
+/password-manager-extension/pnpm-debug.log*
+/password-manager-extension/lerna-debug.log*
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

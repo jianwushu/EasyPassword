@@ -1,0 +1,30 @@
+{
+  "name": "password-manager-extension",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "axios": "^1.7.2",
+    "lucide-vue-next": "^0.395.0",
+    "naive-ui": "^2.42.0",
+    "pinia": "^2.1.7",
+    "vue": "^3.3.4",
+    "vue-i18n": "^9.2.2",
+    "vue-router": "^4.5.1"
+  },
+  "devDependencies": {
+    "@intlify/unplugin-vue-i18n": "^2.0.0",
+    "@types/chrome": "^0.1.1",
+    "@types/node": "^24.1.0",
+    "@vitejs/plugin-vue": "^5.0.5",
+    "pinia-plugin-persistedstate": "^3.2.1",
+    "typescript": "^5.5.2",
+    "vite": "^5.3.1",
+    "vue-tsc": "^2.0.22"
+  }
+}
