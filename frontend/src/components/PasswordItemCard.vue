@@ -116,8 +116,8 @@ const logoUrl = computed(() => {
 });
 
 const websiteUrl = computed(() => {
-  if (!props.item.name) return '#';
-  return props.item.name.startsWith('http') ? props.item.name : `https://${props.item.name}`;
+  if (!props.item.website) return '#';
+  return props.item.website.startsWith('http') ? props.item.website : `https://${props.item.website}`;
 });
 
 const websiteInitial = computed(() => {

@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia';
 import * as api from '../api/auth';
 import { deriveKey, generateSalt, hashKey } from '../crypto/vault';
+import { createChromeStorage } from './storage';
 
 export const useAuthStore = defineStore('auth', {
   state: () => ({
@@ -51,13 +52,31 @@ export const useAuthStore = defineStore('auth', {
       this.username = username;
       this.masterSalt = masterSalt;
       this.isAuthenticated = true;
+      // Manually persist state
+      const storage = createChromeStorage();
+      storage.setItem('auth', JSON.stringify(this.$state));
     },
     clearAuthData() {
       this.token = null;
       this.username = null;
       this.masterSalt = null;
       this.isAuthenticated = false;
+      // Manually clear persisted state
+      const storage = createChromeStorage();
+      storage.removeItem('auth');
+    },
+    async initializeAuth(): Promise<void> {
+      const storage = createChromeStorage();
+      const authDataString = await storage.getItem('auth');
+      if (authDataString) {
+        const authData = JSON.parse(authDataString);
+        if (authData.token) {
+          this.token = authData.token;
+          this.username = authData.username;
+          this.masterSalt = authData.masterSalt;
+          this.isAuthenticated = true;
+        }
+      }
     },
   },
-  persist: true,
 });

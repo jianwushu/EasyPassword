@@ -60,8 +60,12 @@ const router = createRouter({
 
 const whiteList = ['/login', '/register', '/forgot-password', '/reset-password']; // 无需重定向的白名单
 
-router.beforeEach((to, from, next) => {
+router.beforeEach(async (to, from, next) => {
   const authStore = useAuthStore();
+  // Initialize auth state from storage before checking authentication
+  if (!authStore.token) {
+    await authStore.initializeAuth();
+  }
 
   if (authStore.isAuthenticated) {
     // 如果用户已登录
