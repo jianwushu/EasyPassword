@@ -4,30 +4,30 @@
 *.sw?
 
 # Go backend
-/password-manager-backend/easypassword
-/password-manager-backend/easypassword.exe
+/backend/easypassword
+/backend/easypassword.exe
 *.db
 
 # Node.js frontend
-/password-manager-frontend/node_modules
-/password-manager-frontend/dist
-/password-manager-frontend/dist-ssr
-/password-manager-frontend/*.local
-/password-manager-frontend/npm-debug.log*
-/password-manager-frontend/yarn-debug.log*
-/password-manager-frontend/yarn-error.log*
-/password-manager-frontend/pnpm-debug.log*
-/password-manager-frontend/lerna-debug.log*
+/frontend/node_modules
+/frontend/dist
+/frontend/dist-ssr
+/frontend/*.local
+/frontend/npm-debug.log*
+/frontend/yarn-debug.log*
+/frontend/yarn-error.log*
+/frontend/pnpm-debug.log*
+/frontend/lerna-debug.log*
 # Node.js extension
-/password-manager-extension/node_modules
-/password-manager-extension/dist
-/password-manager-extension/dist-ssr
-/password-manager-extension/*.local
-/password-manager-extension/npm-debug.log*
-/password-manager-extension/yarn-debug.log*
-/password-manager-extension/yarn-error.log*
-/password-manager-extension/pnpm-debug.log*
-/password-manager-extension/lerna-debug.log*
+/extension/node_modules
+/extension/dist
+/extension/dist-ssr
+/extension/*.local
+/extension/npm-debug.log*
+/extension/yarn-debug.log*
+/extension/yarn-error.log*
+/extension/pnpm-debug.log*
+/extension/lerna-debug.log*
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

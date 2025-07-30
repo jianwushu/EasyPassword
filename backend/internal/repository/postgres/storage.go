@@ -46,7 +46,7 @@ func (r *userRepository) Create(ctx context.Context, user *core.User) error {
 
 func (r *userRepository) FindByUsername(ctx context.Context, username string) (*core.User, error) {
 	var user core.User
-	err := r.db.WithContext(ctx).Where("username = ?", username).First(&user).Error
+	err := r.db.WithContext(ctx).Where("username = ?", username).Take(&user).Error
 	if err != nil {
 		if err == gorm.ErrRecordNotFound {
 			return nil, core.ErrUserNotFound
@@ -58,7 +58,7 @@ func (r *userRepository) FindByUsername(ctx context.Context, username string) (*
 
 func (r *userRepository) FindByEmail(ctx context.Context, email string) (*core.User, error) {
 	var user core.User
-	err := r.db.WithContext(ctx).Where("email = ?", email).First(&user).Error
+	err := r.db.WithContext(ctx).Where("email = ?", email).Take(&user).Error
 	if err != nil {
 		if err == gorm.ErrRecordNotFound {
 			return nil, core.ErrUserNotFound
@@ -70,7 +70,7 @@ func (r *userRepository) FindByEmail(ctx context.Context, email string) (*core.U
 
 func (r *userRepository) FindByResetPasswordToken(ctx context.Context, token string) (*core.User, error) {
 	var user core.User
-	err := r.db.WithContext(ctx).Where("reset_password_token = ?", token).First(&user).Error
+	err := r.db.WithContext(ctx).Where("reset_password_token = ?", token).Take(&user).Error
 	if err != nil {
 		if err == gorm.ErrRecordNotFound {
 			return nil, core.ErrUserNotFound
@@ -137,7 +137,7 @@ func (r *verificationCodeRepository) Create(ctx context.Context, vc *core.Verifi
 
 func (r *verificationCodeRepository) Find(ctx context.Context, email string) (*core.VerificationCode, error) {
 	var vc core.VerificationCode
-	err := r.db.WithContext(ctx).Where("email = ?", email).First(&vc).Error
+	err := r.db.WithContext(ctx).Where("email = ?", email).Take(&vc).Error
 	if err != nil {
 		if err == gorm.ErrRecordNotFound {
 			return nil, core.ErrVerificationCodeNotFound

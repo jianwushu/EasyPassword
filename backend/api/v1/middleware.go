@@ -4,7 +4,9 @@ import (
 	"easy-password-backend/config"
 	"easy-password-backend/internal/apierror"
 	"easy-password-backend/internal/crypto"
+	"log/slog"
 	"strings"
+	"time"
 
 	"github.com/gin-gonic/gin"
 )
@@ -38,5 +40,26 @@ func AuthMiddleware(cfg *config.Config) gin.HandlerFunc {
 		c.Set("userID", claims.UserID)
 
 		c.Next()
+	}
+}
+
+// LoggingMiddleware 创建一个用于记录 HTTP 请求的 Gin 中间件。
+func LoggingMiddleware() gin.HandlerFunc {
+	return func(c *gin.Context) {
+		start := time.Now()
+
+		// 处理请求
+		c.Next()
+
+		latency := time.Since(start)
+		status := c.Writer.Status()
+
+		slog.Info("Request handled",
+			"method", c.Request.Method,
+			"path", c.Request.URL.Path,
+			"status", status,
+			"latency", latency.String(),
+			"client_ip", c.ClientIP(),
+		)
 	}
 }

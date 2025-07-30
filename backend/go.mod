@@ -7,18 +7,12 @@ require (
 	github.com/golang-jwt/jwt/v5 v5.2.1
 	github.com/google/uuid v1.6.0
 	golang.org/x/crypto v0.23.0
+	gopkg.in/gomail.v2 v2.0.0-20160411212932-81ebce5c23df
 	gorm.io/driver/postgres v1.5.7
 	gorm.io/gorm v1.30.0
-	gopkg.in/gomail.v2 v2.0.0-20160411212932-81ebce5c23df
 )
 
-require (
-	github.com/br0xen/boltbrowser v0.0.0-20230531143731-fcc13603daaf // indirect
-	github.com/br0xen/termbox-util v0.0.0-20170904143325-de1d4c83380e // indirect
-	github.com/mattn/go-runewidth v0.0.9 // indirect
-	github.com/nsf/termbox-go v1.1.1 // indirect
-	gopkg.in/alexcesaro/quotedprintable.v3 v3.0.0-20150716171945-2caba252f4dc // indirect
-)
+require gopkg.in/alexcesaro/quotedprintable.v3 v3.0.0-20150716171945-2caba252f4dc // indirect
 
 require (
 	github.com/bytedance/sonic v1.11.6 // indirect

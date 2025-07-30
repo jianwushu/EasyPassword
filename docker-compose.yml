@@ -16,7 +16,7 @@ services:
 
   backend:
     build:
-      context: ./password-manager-backend
+      context: ./backend
       dockerfile: Dockerfile
     container_name: easypassword-backend
     ports:
@@ -30,7 +30,7 @@ services:
 
   frontend:
     build:
-      context: ./password-manager-frontend
+      context: ./frontend
       dockerfile: Dockerfile
     container_name: easypassword-frontend
     ports:

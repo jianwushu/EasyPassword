@@ -90,7 +90,7 @@ CREATE TABLE vault_items (
 **a. 项目结构 (建议采用整洁架构/DDD分层思想)**
 
 ```
-/password-manager-backend
+/backend
 ├── /api           # API路由、请求/响应模型定义
 │   └── v1/        # API版本
 ├── /cmd           # 程序入口 (main.go)
@@ -159,7 +159,7 @@ func (s *AuthService) Register(ctx context.Context, username, authPassword strin
 **a. 项目结构**
 
 ```
-/password-manager-frontend
+/frontend
 ├── /src
 │   ├── /api          # Axios封装和API请求函数
 │   ├── /assets       # 静态资源

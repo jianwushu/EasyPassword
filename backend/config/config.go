@@ -19,6 +19,8 @@ type Config struct {
 	SMTPPassword   string
 	SMTPFrom       string
 	FrontendURL    string
+	LogLevel       string
+	LogFormat      string
 }
 
 // Load 从环境变量加载配置。
@@ -81,6 +83,16 @@ func Load() *Config {
 		frontendURL = "http://localhost:5173" // dev default
 	}
 
+	logLevel := os.Getenv("LOG_LEVEL")
+	if logLevel == "" {
+		logLevel = "info"
+	}
+
+	logFormat := os.Getenv("LOG_FORMAT")
+	if logFormat == "" {
+		logFormat = "text"
+	}
+
 	return &Config{
 		DatabaseURL:    dbURL,
 		JWTSecret:      jwtSecret,
@@ -93,5 +105,7 @@ func Load() *Config {
 		SMTPPassword:   smtpPassword,
 		SMTPFrom:       smtpFrom,
 		FrontendURL:    frontendURL,
+		LogLevel:       logLevel,
+		LogFormat:      logFormat,
 	}
 }

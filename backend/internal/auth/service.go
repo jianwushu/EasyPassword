@@ -2,12 +2,14 @@ package auth
 
 import (
 	"context"
+	"crypto/subtle"
 	"easy-password-backend/config"
 	"easy-password-backend/internal/apierror"
 	"easy-password-backend/internal/core"
 	"easy-password-backend/internal/crypto"
 	"easy-password-backend/internal/email"
 	"fmt"
+	"log/slog"
 	"math/rand"
 	"strings"
 	"time"
@@ -33,37 +35,46 @@ func NewAuthService(userRepo core.UserRepository, vcRepo core.VerificationCodeRe
 
 // Register 处理用户注册的业务逻辑。
 func (s *AuthService) Register(ctx context.Context, username, email, masterKeyHash, masterSalt, code string) (*core.User, error) {
+	slog.Info("Attempting to register new user", "username", username, "email", email)
 	// 1. 验证验证码
 	vc, err := s.vcRepo.Find(ctx, email)
 	if err != nil {
 		if err == core.ErrVerificationCodeNotFound {
+			slog.Warn("Registration failed: verification code not found", "email", email)
 			return nil, apierror.ErrInvalidVerificationCode
 		}
+		slog.Error("Registration failed: error finding verification code", "error", err)
 		return nil, apierror.ErrInternalServer
 	}
 
 	if vc.Code != code {
+		slog.Warn("Registration failed: invalid verification code", "email", email)
 		return nil, apierror.ErrInvalidVerificationCode
 	}
 
 	if time.Now().After(vc.ExpiresAt) {
+		slog.Warn("Registration failed: verification code expired", "email", email)
 		return nil, apierror.ErrVerificationCodeExpired
 	}
 
 	// 2. 检查用户或邮箱是否已存在。
 	_, err = s.userRepo.FindByUsername(ctx, username)
 	if err == nil {
+		slog.Warn("Registration failed: username already exists", "username", username)
 		return nil, apierror.ErrUserOrEmailExists
 	}
 	if err != core.ErrUserNotFound {
+		slog.Error("Registration failed: error checking username", "error", err)
 		return nil, apierror.ErrInternalServer
 	}
 
 	_, err = s.userRepo.FindByEmail(ctx, email)
 	if err == nil {
+		slog.Warn("Registration failed: email already exists", "email", email)
 		return nil, apierror.ErrUserOrEmailExists
 	}
 	if err != core.ErrUserNotFound {
+		slog.Error("Registration failed: error checking email", "error", err)
 		return nil, apierror.ErrInternalServer
 	}
 
@@ -77,17 +88,20 @@ func (s *AuthService) Register(ctx context.Context, username, email, masterKeyHa
 
 	// 4. 将新用户保存到存储库。
 	if err := s.userRepo.Create(ctx, newUser); err != nil {
+		slog.Error("Failed to create user in repository", "error", err)
 		return nil, apierror.ErrInternalServer
 	}
 
 	// 5. 删除已使用的验证码
 	_ = s.vcRepo.Delete(ctx, email)
 
+	slog.Info("User registered successfully", "user_id", newUser.ID, "username", newUser.Username)
 	return newUser, nil
 }
 
 // Login 处理用户登录的业务逻辑，并返回一个 JWT 和用户的主盐。
 func (s *AuthService) Login(ctx context.Context, identifier, masterKeyHash string) (string, string, string, error) {
+	slog.Info("Login attempt", "identifier", identifier)
 	var user *core.User
 	var err error
 	// 1. 按标识符（用户名或邮箱）查找用户。
@@ -98,23 +112,31 @@ func (s *AuthService) Login(ctx context.Context, identifier, masterKeyHash strin
 	}
 
 	if err != nil {
+		slog.Warn("Login failed: user not found", "identifier", identifier, "error", err)
 		return "", "", "", apierror.ErrInvalidCredentials
 	}
 
 	// 2. 将提供的主密钥哈希与存储的哈希进行比较。
-	// 注意：这是一个直接的字符串比较。在实际场景中，
-	// 您应该使用恒定时间比较函数来防止时序攻击。
-	if user.AuthHash != masterKeyHash {
+	// 使用恒定时间比较函数来防止时序攻击。
+	if len(user.AuthHash) != len(masterKeyHash) {
+		slog.Warn("Login failed: invalid credentials (hash length mismatch)", "user_id", user.ID)
+		return "", "", "", apierror.ErrInvalidCredentials
+	}
+
+	if subtle.ConstantTimeCompare([]byte(user.AuthHash), []byte(masterKeyHash)) == 0 {
+		slog.Warn("Login failed: invalid credentials (hash mismatch)", "user_id", user.ID)
 		return "", "", "", apierror.ErrInvalidCredentials
 	}
 
 	// 3. 生成 JWT。
 	token, err := crypto.GenerateJWT(user.ID, s.cfg.JWTSecret, s.cfg.JWTExpiration)
 	if err != nil {
+		slog.Error("Failed to generate JWT for user", "user_id", user.ID, "error", err)
 		return "", "", "", apierror.ErrInternalServer
 	}
 
-	// 4. 返回令牌和主盐。
+	slog.Info("User logged in successfully", "user_id", user.ID)
+	// 4. 返回令牌和主盐、用户名。
 	return token, string(user.MasterSalt), user.Username, nil
 }
 
@@ -151,7 +173,7 @@ func (s *AuthService) SendVerificationCode(ctx context.Context, emailAddr string
 	code := fmt.Sprintf("%06v", rand.New(rand.NewSource(time.Now().UnixNano())).Int31n(1000000))
 
 	// 打印验证码到控制台以供测试
-	fmt.Printf("Verification code for %s: %s\n", emailAddr, code)
+	slog.Debug("Verification code generated", "email", emailAddr, "code", code)
 
 	// 3. 创建验证码实体
 	vc := &core.VerificationCode{
@@ -170,8 +192,7 @@ func (s *AuthService) SendVerificationCode(ctx context.Context, emailAddr string
 	go func() {
 		err := s.emailSvc.SendVerificationCodeEmail(emailAddr, code)
 		if err != nil {
-			// 在生产环境中，这里应该有更健壮的日志记录
-			fmt.Printf("Failed to send verification email to %s: %v\n", emailAddr, err)
+			slog.Error("Failed to send verification email", "recipient", emailAddr, "error", err)
 		}
 	}()
 
@@ -214,9 +235,10 @@ func (s *AuthService) RequestPasswordReset(ctx context.Context, emailAddr string
 		// 出于安全原因，即使找不到用户，我们也假装成功。
 		// 这可以防止攻击者使用此端点来确定哪些电子邮件已注册。
 		if err == core.ErrUserNotFound {
-			fmt.Printf("Password reset requested for non-existent user: %s\n", emailAddr)
+			slog.Info("Password reset requested for non-existent user", "email", emailAddr)
 			return nil
 		}
+		slog.Error("Error finding user for password reset", "email", emailAddr, "error", err)
 		return apierror.ErrInternalServer
 	}
 
@@ -244,11 +266,11 @@ func (s *AuthService) RequestPasswordReset(ctx context.Context, emailAddr string
 		resetLink := fmt.Sprintf("%s/reset-password/%s", s.cfg.FrontendURL, token)
 
 		// 打印验证码到控制台以供测试
-		fmt.Printf("ResetPassword link for %s: %s\n", emailAddr, resetLink)
+		slog.Debug("Password reset link generated", "email", emailAddr, "link", resetLink)
 
 		err := s.emailSvc.SendPasswordResetEmail(user.Email, resetLink)
 		if err != nil {
-			fmt.Printf("Failed to send password reset email to %s: %v\n", user.Email, err)
+			slog.Error("Failed to send password reset email", "recipient", user.Email, "error", err)
 		}
 	}()
 
@@ -257,8 +279,10 @@ func (s *AuthService) RequestPasswordReset(ctx context.Context, emailAddr string
 
 // ResetPassword 使用有效的重置令牌重置用户的密码。
 func (s *AuthService) ResetPassword(ctx context.Context, token, newMasterKeyHash, newMasterSalt string) error {
+	slog.Info("Attempting to reset password")
 	// 1. 验证令牌。
 	if token == "" {
+		slog.Warn("Password reset failed: no token provided")
 		return apierror.ErrInvalidResetToken
 	}
 	tokenHash := crypto.HashString(token)
@@ -266,13 +290,16 @@ func (s *AuthService) ResetPassword(ctx context.Context, token, newMasterKeyHash
 	user, err := s.userRepo.FindByResetPasswordToken(ctx, tokenHash)
 	if err != nil {
 		if err == core.ErrUserNotFound {
+			slog.Warn("Password reset failed: invalid token")
 			return apierror.ErrInvalidResetToken
 		}
+		slog.Error("Error finding user by reset token", "error", err)
 		return apierror.ErrInternalServer
 	}
 
 	// 2. 检查令牌是否已过期。
 	if user.ResetPasswordTokenExpiresAt == nil || time.Now().After(*user.ResetPasswordTokenExpiresAt) {
+		slog.Warn("Password reset failed: token expired", "user_id", user.ID)
 		// 为了安全起见，清除过期的令牌。
 		user.ResetPasswordToken = nil
 		user.ResetPasswordTokenExpiresAt = nil
@@ -289,8 +316,10 @@ func (s *AuthService) ResetPassword(ctx context.Context, token, newMasterKeyHash
 	user.ResetPasswordTokenExpiresAt = nil
 
 	if err := s.userRepo.Update(ctx, user); err != nil {
+		slog.Error("Failed to update user password", "user_id", user.ID, "error", err)
 		return apierror.ErrInternalServer
 	}
 
+	slog.Info("Password reset successfully", "user_id", user.ID)
 	return nil
 }
